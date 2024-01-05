@@ -1,6 +1,8 @@
+# Импортируем необходимые библиотеки. Получившийся выигрыш будем отображать графиками
 import matplotlib.pyplot as plt
 import random
 
+# функция, возвращающая выигрыш или проигрыщ по результатам броска
 def brosok ():
     br1=random.randint(1,6)
     br2=random.randint(1,6)
@@ -10,16 +12,21 @@ def brosok ():
         res='Loos'
     return (res)
 
+#функция, строящая график по итогам броска. step - ставка, которая х4, в случаи выигрыша
 def graph():
     r=[]
-    stavka=2000
-    step=4
+    # размер первоначальной суммы
+    stavka=2000 
+    #ставка   
+    step=4 
     for i in range(1000):
         r=brosok()
         if r=='Win':
-            stavka=stavka+4*step
+            #если выигрыш
+            stavka=stavka+4*step 
         else:
-            stavka=stavka-step
+            #если проигрыш
+            stavka=stavka-step 
         plt.plot(i,stavka, 
                  marker='.',
                  markersize=2)
